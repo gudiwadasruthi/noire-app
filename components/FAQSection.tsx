@@ -196,24 +196,6 @@ export default function FAQSection() {
             Real questions from real people — answered in plain language, without jargon,
             by the people who made NOIRÉ.
           </p>
-
-          {/* search bar */}
-          <div className="relative max-w-xl mx-auto">
-            <input
-              type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search your question..."
-              className="w-full bg-[#0d0a06] border border-[#c9943a]/30 rounded-md px-5 py-4 pr-14 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/40 outline-none focus:border-[#c9943a]/70 transition-colors duration-200"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            />
-            {/* search icon */}
-            <div className="absolute right-5 top-1/2 -translate-y-1/2 text-[#c9943a]/50 pointer-events-none">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </div>
-          </div>
         </div>
 
         <div className="max-w-4xl mx-auto px-6 h-px bg-gradient-to-r from-transparent via-[#c9943a]/25 to-transparent" />

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 /* ─────────────────────────────────────────────────────────────
    EMAIL DATA
@@ -13,6 +14,7 @@ const emails = [
     preview: "Welcome to NOIRÉ. Here's what happens next.",
     buttonOutline: true,
     buttonText: "EXPLORE NOIRÉ",
+    buttonHref: "/",
     content: (
       <>
         <p>Welcome.</p>
@@ -37,6 +39,7 @@ const emails = [
     preview: "It started with a frustration most fragrance lovers in India will recognise.",
     buttonOutline: true,
     buttonText: "READ THE FULL STORY",
+    buttonHref: "/storyboard",
     content: (
       <>
         <p>Here is the honest version of how NOIRÉ started:</p>
@@ -67,6 +70,7 @@ const emails = [
     preview: "It takes two seconds and it ruins everything.",
     buttonOutline: false,
     buttonText: "DISCOVER NOIRÉ EDP",
+    buttonHref: "/tutorial",
     content: (
       <>
         <p className="font-semibold text-[#ede8d4]">Stop rubbing your wrists together.</p>
@@ -93,6 +97,7 @@ const emails = [
     preview: "He didn't tell them it was an Indian brand until they asked twice.",
     buttonOutline: true,
     buttonText: "READ ALL REVIEWS",
+    buttonHref: "/reviews",
     content: (
       <>
         <p>We'll let Siddharth tell it:</p>
@@ -114,33 +119,6 @@ const emails = [
           Siddharth is not alone. 847 verified reviews. 4.9 out of 5. Cities across India.
         </p>
         <p className="font-semibold text-[#ede8d4]">NOIRÉ doesn't ask for attention. It commands it.</p>
-      </>
-    ),
-  },
-  {
-    step: "05",
-    cadence: "Day 10",
-    subject: "This is the last email we'll send you about buying NOIRÉ.",
-    preview: "After this, we'll only write when we have something worth saying.",
-    buttonOutline: false,
-    buttonText: "SHOP NOIRÉ EDP",
-    isLargeCTA: true,
-    content: (
-      <>
-        <p>
-          We've told you the story. We've shown you the ritual. We've shared what other people
-          experienced. Now it's simply an invitation.
-        </p>
-        <p className="font-semibold text-[#ede8d4]">
-          NOIRÉ is available now. No countdown. No artificial scarcity. Just a fragrance that
-          was built for you, waiting.
-        </p>
-        <p>
-          If you buy it and love it — write to us. We read every message. If you buy it and it
-          isn't right for you — we'd genuinely like to know why. We're a small team building
-          something we believe in, and your honesty matters more to us than your silence.
-        </p>
-        <p>Whatever you decide — thank you for reading. You've been a generous audience.</p>
       </>
     ),
   },
@@ -232,21 +210,16 @@ export default function NewslettersSection() {
               {email.content}
 
               {/* CTA Button */}
-              <div className={`mt-6 ${email.isLargeCTA ? "flex flex-col items-center text-center mt-12" : ""}`}>
-                <button
-                  className={`font-medium text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 py-3.5 
-                    ${email.isLargeCTA ? "px-12 py-4 shadow-[0_0_20px_rgba(201,148,58,0.15)]" : "px-8"}
+              <div className="mt-6">
+                <Link
+                  href={email.buttonHref || "/"}
+                  className={`inline-block font-medium text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 py-3.5 px-8
                     ${email.buttonOutline
                       ? "border border-[#c9943a] text-[#c9943a] hover:bg-[#c9943a]/10 hover:text-[#f0d060] hover:border-[#f0d060]"
                       : "bg-[#c9943a] text-[#080604] border border-[#c9943a] hover:bg-[#f0d060] hover:border-[#f0d060]"}`}
                 >
                   {email.buttonText}
-                </button>
-                {email.isLargeCTA && (
-                  <p className="mt-4 font-light text-[9px] tracking-[0.1em] text-[#ede8d4]/30 uppercase m-0">
-                    You'll hear from us again only when we have something worth your time.
-                  </p>
-                )}
+                </Link>
               </div>
             </div>
           </div>

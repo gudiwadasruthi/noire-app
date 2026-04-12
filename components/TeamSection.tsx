@@ -234,7 +234,13 @@ export default function TeamSection() {
       </section>
 
       {/* ══════════ CLICK HINT ══════════ */}
-      <div className="text-center pt-10 pb-2">
+      <div className="text-center pt-6 pb-2 max-w-3xl mx-auto px-6">
+        <p className="font-light text-[14px] leading-[1.9] text-[#d4c4a0]/60 mb-4">
+          NOIRÉ is the work of four people who refused to separate craft from commerce. Together, we bring strategy, design, research, and engineering to every decision — ensuring that what NOIRÉ communicates is as considered as what it contains.
+        </p>
+        <p className="font-light text-[14px] leading-[1.9] text-[#d4c4a0]/60 mb-6">
+          We are a small team with a singular obsession: to build an Indian fragrance brand that belongs on the same shelf as the world's best — not by imitation, but by doing the work properly from the beginning.
+        </p>
         <span className="font-light text-[9px] tracking-[0.3em] text-[#c9943a]/45 uppercase">
           ↓ &nbsp; Click a card to learn more &nbsp; ↓
         </span>
@@ -256,12 +262,8 @@ export default function TeamSection() {
                     name={member.name}
                     className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-105"
                   />
-                  {/* hover overlay */}
-                  <div className="absolute inset-0 bg-[#c9943a]/0 group-hover:bg-[#c9943a]/[0.06] transition-colors duration-300 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-light text-[8px] tracking-[0.3em] text-[#f0d060] uppercase bg-[#080604]/70 border border-[#c9943a]/40 px-4 py-2 rounded-full">
-                      View Profile
-                    </span>
-                  </div>
+                  {/* hover overlay — subtle gold tint only, no text */}
+                  <div className="absolute inset-0 bg-[#c9943a]/0 group-hover:bg-[#c9943a]/[0.06] transition-colors duration-300" />
                 </div>
 
                 {/* ── Card footer ── */}
@@ -275,9 +277,7 @@ export default function TeamSection() {
                   <p className="font-light text-xs leading-relaxed text-[#d4c4a0]/55 mt-2 m-0">
                     {member.shortLine}
                   </p>
-                  <p className="font-light text-[8px] tracking-[0.2em] text-[#c9943a]/40 uppercase mt-3 m-0 group-hover:text-[#c9943a]/70 transition-colors">
-                    Read more →
-                  </p>
+
                 </div>
               </article>
             </li>

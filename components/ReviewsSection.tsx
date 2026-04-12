@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
@@ -111,9 +112,146 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
+/* ─── Review Modal ─────────────────────────────────────────── */
+function ReviewModal({ onClose }: { onClose: () => void }) {
+  const [submitted, setSubmitted] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      style={{ background: "rgba(5,4,3,0.88)", backdropFilter: "blur(14px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-lg bg-[#0c0906] border border-[#c9943a]/30 rounded-xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.9)]"
+        style={{ maxHeight: "90vh", overflowY: "auto" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Gold top accent */}
+        <div className="h-0.5 w-full bg-gradient-to-r from-[#c9943a] via-[#f0d060] to-[#c9943a]" />
+
+        {/* Close */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-[#080604]/80 border border-[#c9943a]/30 flex items-center justify-center text-[#c9943a] hover:border-[#c9943a] hover:bg-[#c9943a]/10 transition-colors duration-200 text-sm"
+        >✕</button>
+
+        <div className="px-8 pt-10 pb-12 md:px-12">
+          {submitted ? (
+            <div className="flex flex-col items-center text-center py-8 gap-5">
+              <span className="text-4xl text-[#c9943a]/60">◈</span>
+              <h2 className="text-[28px] font-normal text-[#f0d060] m-0" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                Thank You.
+              </h2>
+              <p className="font-light text-[13.5px] leading-[1.9] text-[#ede8d4]/60 m-0 max-w-sm">
+                Your review has been received. We read every word — and it matters more than you know.
+              </p>
+              <button
+                onClick={onClose}
+                className="mt-4 font-medium text-[10px] tracking-[0.3em] uppercase text-[#c9943a] border border-[#c9943a] px-8 py-3 hover:bg-[#c9943a]/10 transition-colors duration-200"
+              >Close</button>
+            </div>
+          ) : (
+            <>
+              <p className="font-medium text-[9px] tracking-[0.4em] text-[#c9943a] uppercase mb-4 m-0">Share Your Experience</p>
+              <h2 className="text-[26px] md:text-[30px] font-normal text-[#f0d060] m-0 mb-2 leading-[1.3]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                Tell Us Your NOIRÉ Story.
+              </h2>
+              <p className="font-light text-[13px] text-[#ede8d4]/50 mb-8 m-0">Your honest words help others find their signature scent.</p>
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {/* Name + City */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">Your Name</label>
+                    <input required type="text" placeholder="e.g. Arjun M." className="bg-[#0d0a06] border border-[#c9943a]/25 px-4 py-3 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/30 outline-none focus:border-[#c9943a]/60 transition-colors rounded-sm" style={{ fontFamily: "'Montserrat', sans-serif" }} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">City</label>
+                    <input required type="text" placeholder="e.g. Hyderabad" className="bg-[#0d0a06] border border-[#c9943a]/25 px-4 py-3 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/30 outline-none focus:border-[#c9943a]/60 transition-colors rounded-sm" style={{ fontFamily: "'Montserrat', sans-serif" }} />
+                  </div>
+                </div>
+
+                {/* Rating */}
+                <div className="flex flex-col gap-2">
+                  <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">Your Rating</label>
+                  <div className="flex items-center gap-2">
+                    {[1,2,3,4,5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setRating(star)}
+                        onMouseEnter={() => setHoveredRating(star)}
+                        onMouseLeave={() => setHoveredRating(0)}
+                        className="transition-transform hover:scale-110"
+                      >
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill={star <= (hoveredRating || rating) ? "#c9943a" : "transparent"} stroke="#c9943a" strokeWidth="1.5">
+                          <path d="M12 2L15 9h8l-6 5 2 9-7-5-7 5 2-9-6-5h8z" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    ))}
+                    {rating > 0 && <span className="font-light text-[11px] text-[#c9943a]/60 ml-1">{rating}/5</span>}
+                  </div>
+                </div>
+
+                {/* Wear occasion */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">How do you wear NOIRÉ?</label>
+                  <select required className="bg-[#0d0a06] border border-[#c9943a]/25 px-4 py-3 text-[13px] font-light text-[#ede8d4] outline-none focus:border-[#c9943a]/60 transition-colors rounded-sm appearance-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <option value="" className="text-[#c9943a]/40">Select an occasion</option>
+                    <option value="Daily Wear">Daily Wear</option>
+                    <option value="Office">Office / Professional</option>
+                    <option value="Evening">Evening &amp; Special Occasions</option>
+                    <option value="Gifting">Gifted to Someone</option>
+                    <option value="Sensitive Skin">Sensitive Skin User</option>
+                  </select>
+                </div>
+
+                {/* Review text */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">Your Experience</label>
+                  <textarea
+                    required
+                    rows={5}
+                    placeholder="Tell us how NOIRÉ has changed the way a room responds to you, or simply how it made your morning ritual better..."
+                    className="bg-[#0d0a06] border border-[#c9943a]/25 px-4 py-3 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/30 outline-none focus:border-[#c9943a]/60 transition-colors rounded-sm resize-none leading-[1.7]"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  />
+                </div>
+
+                {/* One-word descriptor */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-medium text-[8.5px] tracking-[0.25em] text-[#c9943a] uppercase">In one word, NOIRÉ is...</label>
+                  <input type="text" placeholder="e.g. Commanding, Elegant, Unforgettable" className="bg-[#0d0a06] border border-[#c9943a]/25 px-4 py-3 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/30 outline-none focus:border-[#c9943a]/60 transition-colors rounded-sm" style={{ fontFamily: "'Montserrat', sans-serif" }} />
+                </div>
+
+                <button
+                  type="submit"
+                  className="mt-2 relative overflow-hidden font-medium text-[10px] tracking-[0.3em] uppercase py-4 border border-[#c9943a] text-[#c9943a] hover:text-[#080604] transition-colors duration-400 group"
+                >
+                  <span className="absolute inset-0 bg-[#c9943a] scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
+                  <span className="relative z-10">Submit Your Review</span>
+                </button>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Main Component ───────────────────────────────────────── */
 export default function ReviewsSection() {
   const [activeFilter, setActiveFilter] = useState("All Reviews");
+  const [showModal, setShowModal] = useState(false);
 
   const filteredReviews = reviews.filter(
     (r) => activeFilter === "All Reviews" || r.tag === activeFilter
@@ -287,6 +425,7 @@ export default function ReviewsSection() {
 
             <div className="mt-4">
               <button
+                onClick={() => setShowModal(true)}
                 className="font-medium text-[10px] tracking-[0.3em] uppercase text-[#c9943a] border border-[#c9943a] px-10 py-4 hover:bg-[#c9943a]/10 hover:border-[#f0d060] hover:text-[#f0d060] transition-colors duration-300"
               >
                 Submit Your Review
@@ -311,6 +450,9 @@ export default function ReviewsSection() {
           Reviews &amp; Testimonials · 2026
         </p>
       </footer>
+
+      {/* ══════════ MODAL ══════════ */}
+      {showModal && <ReviewModal onClose={() => setShowModal(false)} />}
 
     </main>
   );
