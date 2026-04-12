@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
+import BlogSection from "../../components/BlogSection";
 import ContentCalendarSection from "../../components/ContentCalendarSection";
+import ListiclesSection from "../../components/ListiclesSection";
 import FlyerSection from "../../components/FlyerSection";
 import OpinionSection from "../../components/OpinionSection";
 import PersonaSection from "../../components/PersonaSection";
@@ -14,6 +16,10 @@ import SocialSection from "../../components/SocialSection";
 
 export default function DynamicPage({ params }: { params: { page: string } }) {
   switch (params.page) {
+    case "blog":
+      return <BlogSection />;
+    case "listicles":
+      return <ListiclesSection />;
     case "calendar":
       return <ContentCalendarSection />;
     case "flyer":

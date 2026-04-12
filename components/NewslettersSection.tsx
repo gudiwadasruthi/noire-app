@@ -101,7 +101,7 @@ const emails = [
     content: (
       <>
         <p>We'll let Siddharth tell it:</p>
-        
+
         {/* Pull Quote Block */}
         <div className="relative py-6 pl-4 md:pl-10 my-8">
           <span className="absolute top-0 left-0 text-[100px] leading-none text-[#c9943a]/15 pointer-events-none select-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -188,18 +188,18 @@ export default function NewslettersSection() {
               <span className="absolute top-4 right-6 font-medium text-[8px] tracking-[0.2em] text-[#c9943a]/60 uppercase border border-[#c9943a]/20 px-2 py-1 bg-[#c9943a]/[0.05] rounded-sm">
                 Sent: {email.cadence}
               </span>
-              
+
               <p className="font-medium text-[10px] tracking-[0.1em] text-[#ede8d4]/40 mb-4 m-0 uppercase">
                 From: <span className="text-[#ede8d4]/80 ml-2">NOIRÉ hello@noire.in</span>
               </p>
-              
+
               <h2
                 className="text-[22px] md:text-[28px] font-medium leading-[1.3] text-[#f0d060] m-0"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 Subject: {email.subject}
               </h2>
-              
+
               <p className="mt-2 font-light text-[13px] italic text-[#ede8d4]/50 m-0">
                 Preview text: “{email.preview}”
               </p>
@@ -234,7 +234,7 @@ export default function NewslettersSection() {
               HOW THIS SEQUENCE IS BUILT
             </h3>
           </div>
-          
+
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -274,40 +274,6 @@ export default function NewslettersSection() {
             removed from the remaining sequence and moved to the post-purchase journey. Subscribers who
             reach Day 10 without purchasing are moved to the monthly NOIRÉ Letter — a consistent send
             cadence that builds habit and expectation without pressure.
-          </p>
-        </div>
-      </section>
-
-      {/* ══════════ NEWSLETTER SIGNUP PREVIEW ══════════ */}
-      <section className="max-w-3xl mx-auto px-6 pb-32">
-        <div className="border border-[#c9943a]/20 rounded-xl px-8 py-16 md:px-14 md:py-20 text-center bg-[#c9943a]/[0.02]">
-          <h2
-            className="text-[32px] md:text-[40px] font-normal text-[#f0d060] m-0 mb-4 leading-[1.2]"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            Join the NOIRÉ Letter.
-          </h2>
-          <p className="font-light text-[14.5px] text-[#ede8d4]/60 m-0 mb-10">
-            One email when we have something worth saying. Never more.
-          </p>
-
-          <form className="max-w-md mx-auto flex flex-col md:flex-row gap-3 md:gap-0" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 bg-[#0d0a06] border border-[#c9943a]/30 md:border-r-0 md:rounded-l-sm md:rounded-r-none rounded-sm px-6 py-4 text-[13px] font-light text-[#ede8d4] placeholder-[#c9943a]/40 outline-none focus:border-[#c9943a]/70 transition-colors duration-200"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            />
-            <button
-              type="submit"
-              className="font-medium text-[10px] tracking-[0.3em] uppercase bg-[#c9943a] text-[#080604] hover:bg-[#f0d060] transition-colors duration-200 px-8 py-4 md:rounded-r-sm md:rounded-l-none rounded-sm"
-            >
-              Join
-            </button>
-          </form>
-
-          <p className="mt-8 font-light text-[10px] tracking-[0.05em] text-[#ede8d4]/30 uppercase m-0">
-            No discount codes. No weekly promotions. Just NOIRÉ — when it matters.
           </p>
         </div>
       </section>
