@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────
    TYPES
@@ -165,7 +165,7 @@ const relatedLinks = [
 /* ─────────────────────────────────────────────────────────────
    ANIMATION VARIANTS
    ───────────────────────────────────────────────────────────── */
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
