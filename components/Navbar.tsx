@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  
+
   const isPortfolioActive = ["/calendar", "/opinion", "/press", "/faq", "/reviews", "/newsletters", "/social", "/blog", "/listicles", "/case-studies", "/ebooks", "/tutorial"].includes(pathname || "");
   const isAboutActive = ["/team", "/persona", "/flyer", "/storyboard"].includes(pathname || "");
 
@@ -36,10 +36,11 @@ export default function Navbar() {
         <Link href="/">NOIRÉ</Link>
       </h1>
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .mobile-nav-scroll::-webkit-scrollbar { display: none; }
       `}} />
-      <div 
+      <div
         className="mobile-nav-scroll flex items-center space-x-5 md:space-x-6 text-[10.5px] md:text-xs uppercase tracking-wider text-[#D4C4A0] overflow-x-auto whitespace-nowrap w-full ml-4 md:ml-0 md:justify-end pr-2 md:pr-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
@@ -122,15 +123,10 @@ export default function Navbar() {
                 transition={{ duration: 0.2 }}
                 className="fixed right-4 md:right-8 top-[64px] w-64 max-h-[80vh] overflow-y-auto bg-[#0D0A06] border border-[#C9943A]/30 rounded-md shadow-2xl flex flex-col py-2 z-[100] custom-scroll"
               >
-                
+
                 {/* ── GROUP 1: AWARENESS ── */}
                 <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50">AWARENESS</div>
                 <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
-                
-                <Link href="/social" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/social" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
-                  <span className="text-[#C9943A] text-xs">◈</span>Social Media Captions
-                </Link>
-                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
                 <Link href="/blog" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/blog" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
                   <span className="text-[#C9943A] text-xs">◈</span>Blog Posts &amp; Articles
                 </Link>
@@ -138,11 +134,29 @@ export default function Navbar() {
                 <Link href="/listicles" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/listicles" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
                   <span className="text-[#C9943A] text-xs">◈</span>Listicles
                 </Link>
+                <Link href="/social" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/social" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
+                  <span className="text-[#C9943A] text-xs">◈</span>Social Media Captions
+                </Link>
+                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
+                {/* ── GROUP 2: EDUCATION ── */}
+                <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">EDUCATION</div>
+                <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
 
-                {/* ── GROUP 2: AUTHORITY ── */}
+                <Link href="/tutorial" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/tutorial" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
+                  <span className="text-[#C9943A] text-xs">◈</span>Tutorial Articles
+                </Link>
+                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
+                <Link href="/faq" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/faq" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
+                  <span className="text-[#C9943A] text-xs">◈</span>FAQs / Knowledge Base
+                </Link>
+                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
+                <Link href="/ebooks" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/ebooks" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
+                  <span className="text-[#C9943A] text-xs">◈</span>E-Books &amp; Digital Guides
+                </Link>
+                {/* ── GROUP 3: AUTHORITY ── */}
                 <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">AUTHORITY</div>
                 <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
-                
+
                 <Link href="/opinion" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/opinion" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
                   <span className="text-[#C9943A] text-xs">◈</span>The NOIRÉ Journal
                 </Link>
@@ -155,26 +169,12 @@ export default function Navbar() {
                   <span className="text-[#C9943A] text-xs">◈</span>Case Studies
                 </Link>
 
-                {/* ── GROUP 3: EDUCATION ── */}
-                <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">EDUCATION</div>
-                <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
-                
-                <Link href="/tutorial" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/tutorial" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
-                  <span className="text-[#C9943A] text-xs">◈</span>Tutorial Articles
-                </Link>
-                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
-                <Link href="/faq" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/faq" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
-                  <span className="text-[#C9943A] text-xs">◈</span>FAQs / Knowledge Base
-                </Link>
-                <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
-                <Link href="/ebooks" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/ebooks" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
-                  <span className="text-[#C9943A] text-xs">◈</span>E-Books &amp; Digital Guides
-                </Link>
+
 
                 {/* ── GROUP 4: TRUST & CONVERSION ── */}
                 <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">TRUST &amp; CONVERSION</div>
                 <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
-                
+
                 <Link href="/reviews" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/reviews" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
                   <span className="text-[#C9943A] text-xs">◈</span>Reviews &amp; Testimonials
                 </Link>
@@ -186,7 +186,7 @@ export default function Navbar() {
                 {/* ── GROUP 5: PLANNING ── */}
                 <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">PLANNING</div>
                 <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
-                
+
                 <Link href="/calendar" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/calendar" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
                   <span className="text-[#C9943A] text-xs">◈</span>Content Calendar
                 </Link>

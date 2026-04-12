@@ -28,7 +28,7 @@
 
 .bg-line {
   position: absolute;
-  background: linear-gradient(to bottom, transparent, rgba(201,148,58,0.06), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(201,148,58,0.08), transparent);
   width: 1px;
   height: 100%;
   animation: lineFade 4s ease-in-out infinite;
@@ -41,6 +41,44 @@
 @keyframes lineFade {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
+}
+
+/* ── VIDEO CARD ── */
+.video-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4/5;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201,148,58,0.28);
+  box-shadow:
+    0 0 0 1px rgba(201,148,58,0.06),
+    0 24px 80px rgba(0,0,0,0.8),
+    0 0 60px rgba(201,148,58,0.08) inset;
+  background: #0d0a06;
+  z-index: 1;
+}
+
+/* Gold corner accents */
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  pointer-events: none;
+}
+.corner-tl { top: 10px; left: 10px;  border-top: 1px solid rgba(201,148,58,0.7); border-left: 1px solid rgba(201,148,58,0.7); border-radius: 2px 0 0 0; }
+.corner-tr { top: 10px; right: 10px; border-top: 1px solid rgba(201,148,58,0.7); border-right: 1px solid rgba(201,148,58,0.7); border-radius: 0 2px 0 0; }
+.corner-bl { bottom: 10px; left: 10px;  border-bottom: 1px solid rgba(201,148,58,0.7); border-left: 1px solid rgba(201,148,58,0.7); border-radius: 0 0 0 2px; }
+.corner-br { bottom: 10px; right: 10px; border-bottom: 1px solid rgba(201,148,58,0.7); border-right: 1px solid rgba(201,148,58,0.7); border-radius: 0 0 2px 0; }
+
+/* Loading skeleton */
+.video-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d0a06, #1a1409);
+  z-index: 1;
 }
 
 /* ── LEFT SIDE ── */
@@ -109,7 +147,7 @@
   font-size: 130px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: rgba(201,148,58,0.04);
+  color: rgba(201,148,58,0.07);
   line-height: 1;
   pointer-events: none;
   user-select: none;
@@ -128,6 +166,28 @@
   color: transparent;
   opacity: 0;
   animation: fadeUp 0.9s ease 0.2s forwards;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Shimmer sweep across heading */
+.heading-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(240,208,96,0.18) 50%,
+    transparent 80%
+  );
+  animation: shimmerSweep 3.5s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Tagline */
@@ -173,15 +233,21 @@
 }
 
 .note-icon {
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(201,148,58,0.3);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(201,148,58,0.35);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.note-item:hover .note-icon {
+  border-color: rgba(201,148,58,0.8);
+  box-shadow: 0 0 12px rgba(201,148,58,0.2);
 }
 
 .note-icon::before {
