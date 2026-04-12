@@ -23,13 +23,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#080604]/90 backdrop-blur-md z-50 px-8 py-4 flex justify-between items-center border-b border-[#C9943A]/10">
+    <nav className="fixed top-0 left-0 w-full bg-[#080604]/90 backdrop-blur-md z-50 px-4 md:px-8 py-4 flex justify-between items-center border-b border-[#C9943A]/10">
 
       <h1 className="text-[#C9943A] text-lg font-bold tracking-widest cursor-pointer" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.35em" }}>
         <Link href="/">NOIRÉ</Link>
       </h1>
 
-      <div className="flex items-center space-x-6 text-xs uppercase tracking-wider text-[#D4C4A0]">
+      <style dangerouslySetInnerHTML={{__html: `
+        .mobile-nav-scroll::-webkit-scrollbar { display: none; }
+      `}} />
+      <div 
+        className="mobile-nav-scroll flex items-center space-x-5 md:space-x-6 text-[10.5px] md:text-xs uppercase tracking-wider text-[#D4C4A0] overflow-x-auto whitespace-nowrap w-full ml-4 md:ml-0 md:justify-end pr-2 md:pr-0"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+      >
         <Link href="/" className="hover:text-[#C9943A] transition-colors">Home</Link>
         <Link href="/team" className="hover:text-[#C9943A] transition-colors">Team</Link>
         <Link href="/persona" className="hover:text-[#C9943A] transition-colors">Persona</Link>
@@ -64,7 +70,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-6 w-56 bg-[#0D0A06] border border-[#C9943A]/30 rounded-md shadow-2xl overflow-hidden flex flex-col py-2 z-50"
+                className="fixed right-4 md:right-8 top-[64px] w-56 bg-[#0D0A06] border border-[#C9943A]/30 rounded-md shadow-2xl overflow-hidden flex flex-col py-2 z-[100]"
               >
                 {/* ── NEW: Calendar ── */}
                 <Link

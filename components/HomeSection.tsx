@@ -89,7 +89,7 @@ export default function HomeSection() {
 
           {/* RIGHT */}
           <div className="right-panel flex h-full w-full items-center justify-center">
-             <div className="h-[400px] w-[500px]">
+             <div className="h-[350px] w-[100vw] max-w-[500px] md:h-[400px] md:w-[500px]">
                 <ThreeScene />
              </div>
           </div>
