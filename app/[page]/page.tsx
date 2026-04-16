@@ -13,6 +13,7 @@ import FAQSection from "../../components/FAQSection";
 import ReviewsSection from "../../components/ReviewsSection";
 import NewslettersSection from "../../components/NewslettersSection";
 import SocialSection from "../../components/SocialSection";
+import EbooksSection from "../../components/EbooksSection";
 
 export default function DynamicPage({ params }: { params: { page: string } }) {
   switch (params.page) {
@@ -44,6 +45,8 @@ export default function DynamicPage({ params }: { params: { page: string } }) {
       return <NewslettersSection />;
     case "social":
       return <SocialSection />;
+    case "ebooks":
+      return <EbooksSection />;
     default:
       notFound();
   }

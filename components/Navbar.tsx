@@ -12,7 +12,7 @@ export default function Navbar() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  const isPortfolioActive = ["/calendar", "/opinion", "/press", "/faq", "/reviews", "/newsletters", "/social", "/blog", "/listicles", "/case-studies", "/ebooks", "/tutorial"].includes(pathname || "");
+  const isPortfolioActive = ["/calendar", "/opinion", "/press", "/faq", "/reviews", "/newsletters", "/social", "/blog", "/listicles", "/ebooks", "/tutorial"].includes(pathname || "");
   const isAboutActive = ["/team", "/persona", "/flyer", "/storyboard"].includes(pathname || "");
 
   // Close dropdown when clicking outside
@@ -165,12 +165,6 @@ export default function Navbar() {
                   <span className="text-[#C9943A] text-xs">◈</span>Press Release
                 </Link>
                 <div className="mx-4 my-1 h-px bg-[#C9943A]/10" />
-                <Link href="/case-studies" onClick={() => setIsPortfolioOpen(false)} className={`px-4 py-2.5 text-[10px] tracking-widest transition-colors flex items-center gap-2 ${pathname === "/case-studies" ? "text-[#F0D060] bg-[#1A1510] border-l-2 border-[#F0D060]" : "hover:bg-[#1A1510] hover:text-[#C9943A]"}`}>
-                  <span className="text-[#C9943A] text-xs">◈</span>Case Studies
-                </Link>
-
-
-
                 {/* ── GROUP 4: TRUST & CONVERSION ── */}
                 <div className="px-4 pt-3 pb-1 text-[8px] font-semibold tracking-[0.3em] uppercase text-[#C9943A]/50 mt-2">TRUST &amp; CONVERSION</div>
                 <div className="mx-4 mb-1 h-px bg-[#C9943A]/10" />
