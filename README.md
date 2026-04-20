@@ -20,6 +20,11 @@
   <img src="https://img.shields.io/badge/license-MIT-gold">
 </p>
 
+**NOIRÉ** is a luxury Eau de Parfum brand crafted for the Indian climate — a digital platform that blends cinematic 3D storytelling, editorial content strategy, and a deep dark-gold aesthetic to embody the essence of *mystery, elegance, and presence.*
+Built with Next.js, Three.js, and Framer Motion, it delivers an immersive brand experience across 16+ content pages covering the complete creative marketing funnel.
+
+**Live Demo:** [https://noire-two.vercel.app/](https://noire-two.vercel.app/)
+
 ## Table of Contents
 - [💡 About the Project](#about-the-project)
 - [⚡ Quick Start](#quick-start)
